@@ -37,6 +37,8 @@ export default function Search() {
 
   const [txt, setTxt] = useState("");
 
+  const [count, setCount] = useState(0);
+
   const handleSearch = (event) => {
     event.preventDefault();
     console.log(search);
@@ -49,6 +51,7 @@ export default function Search() {
         ReactDOM.render(Sresults, document.getElementById("search-results"));
       });
       setTxt("Sorted Resources");
+    setCount(count+1);
   };
 
   return (
@@ -73,6 +76,7 @@ export default function Search() {
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 autoComplete="search"
+                helperText={count > 0 ? "Can search more keywords." : " "}
                 autoFocus
               />
               <Button
